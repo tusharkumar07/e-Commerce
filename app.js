@@ -14,8 +14,8 @@ function sendMail(emailAdd){
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'tusharkumar0510@gmail.com',
-          pass: 'tdpkddsgixyuxqgd'
+          user: "username",
+          pass: "password"
         }
       });
       
@@ -49,7 +49,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/userDB")
+mongoose.connect("mongodb://127.0.0.1:27017/userDB")
 
 const userSchema = new mongoose.Schema({
     username: String,
@@ -147,7 +147,7 @@ app.post("/register", function(req,res){
         phno:req.body.phno,
         password:req.body.password
     });
-    sendMail(req.body.email)
+    // sendMail(req.body.email)
     newUser.save().then(res.redirect('/base'));
 })
 app.post("/login", function(req, res){
